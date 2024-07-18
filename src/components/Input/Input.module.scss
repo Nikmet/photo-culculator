@@ -1,0 +1,43 @@
+@import "./../../index.scss";
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__label {
+        font-size: 20px;
+        color: $white;
+        font-weight: 200;
+
+        &-center {
+            align-self: center;
+        }
+    }
+
+    &__input {
+        outline: none;
+        border: 2px solid $brown;
+        border-radius: 5px;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            appearance: none;
+        }
+
+        &-small {
+            height: 35px;
+            width: 200px;
+            font-size: 20px;
+            padding: 8px;
+        }
+
+        // Доделать
+        &-big {
+            height: 70px;
+            width: 450px;
+            font-size: 32px;
+            padding: 5px;
+        }
+    }
+}
