@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Input from "../../components/Input/Input";
 import styles from "./MainLayout.module.scss";
 import { ChangeEvent, useEffect, useState } from "react";
@@ -10,6 +10,23 @@ export function MainLayout() {
     const [height, setHeight] = useState<number | undefined>();
     const [square, setSquare] = useState<number | undefined>();
     const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        navigate("/banner");
+    }, [navigate]);
+
+    useEffect(() => {
+        if (width && height) {
+            setSquare((width * height) / 1000000);
+        } else {
+            setSquare(0);
+        }
+    }, [width, height]);
+
+    useEffect(() => {
+        setMenu(false);
+    }, [location]);
 
     const openMenu = () => {
         setMenu((s) => !s);
@@ -31,18 +48,6 @@ export function MainLayout() {
             setSquare(0);
         }
     };
-
-    useEffect(() => {
-        if (width && height) {
-            setSquare((width * height) / 1000000);
-        } else {
-            setSquare(0);
-        }
-    }, [width, height]);
-
-    useEffect(() => {
-        setMenu(false);
-    }, [location]);
 
     return (
         <>
