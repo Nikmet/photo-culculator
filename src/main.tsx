@@ -4,6 +4,9 @@ import "./index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { MainLayout } from "./layouts/MainLayout/MainLayout";
 import BannerPage from "./pages/BannerPage/BannerPage";
+import TapePage from "./pages/TapePage/TapePage";
+import CutPage from "./pages/CutPage/CutPage";
+import TermoPage from "./pages/TermoPage/TermoPage";
 
 const router = createBrowserRouter([
     {
@@ -13,6 +16,18 @@ const router = createBrowserRouter([
             {
                 path: "/banner",
                 element: <BannerPage />
+            },
+            {
+                path: "/tape",
+                element: <TapePage />
+            },
+            {
+                path: "/cut",
+                element: <CutPage />
+            },
+            {
+                path: "/termo",
+                element: <TermoPage />
             }
         ]
     }

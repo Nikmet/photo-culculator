@@ -13,13 +13,13 @@ const Menu: FunctionComponent<MenuProps> = ({ isActive }) => {
             <NavLink className={styles.link} to="/banner">
                 Расчет банеров
             </NavLink>
-            <NavLink className={styles.link} to="/banner">
+            <NavLink className={styles.link} to="/tape">
                 Пленка ПВX
             </NavLink>
-            <NavLink className={styles.link} to="/banner">
+            <NavLink className={styles.link} to="/cut">
                 Лазерная резка
             </NavLink>
-            <NavLink className={styles.link} to="/banner">
+            <NavLink className={styles.link} to="/termo">
                 Термотрансфер
             </NavLink>
         </div>
