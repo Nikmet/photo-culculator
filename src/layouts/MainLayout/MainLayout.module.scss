@@ -1,5 +1,14 @@
 @import "./../../index.scss";
 
+@keyframes pop {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .container {
     width: 1200px;
     margin: 0 auto;
@@ -42,6 +51,10 @@
     outline: none;
     border: none;
 
+    &-active {
+        display: none;
+    }
+
     &::after {
         content: "";
         position: absolute;
@@ -72,5 +85,9 @@
         height: 25px;
         width: 35px;
         z-index: 2;
+        & > * {
+            opacity: 0;
+            animation: pop 0.3s 0.2s forwards;
+        }
     }
 }

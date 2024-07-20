@@ -1,8 +1,8 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, InputHTMLAttributes } from "react";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
 
-interface InputProps {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
     id: string;
     type: string;
@@ -22,8 +22,10 @@ const Input: FunctionComponent<InputProps> = ({ ...props }) => {
                 {props.label}
             </label>
             <input
+                onChange={props.onChange}
                 type={props.type}
                 id={props.id}
+                value={props.value}
                 className={classNames(styles["input__input"], [
                     props.appearance === "small"
                         ? styles["input__input-small"]
