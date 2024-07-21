@@ -3,12 +3,13 @@ import Input from "../../components/Input/Input";
 import styles from "./MainLayout.module.scss";
 import { ChangeEvent, useEffect, useState } from "react";
 import Menu from "../../components/Menu/Menu";
+import { useSquareStore } from "../../models/SquareStore";
 
 export function MainLayout() {
+    const { setSquare, square } = useSquareStore();
     const [isMenu, setMenu] = useState<boolean>(false);
     const [width, setWidth] = useState<number | undefined>();
     const [height, setHeight] = useState<number | undefined>();
-    const [square, setSquare] = useState<number | undefined>();
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ export function MainLayout() {
         } else {
             setSquare(0);
         }
-    }, [width, height]);
+    }, [width, height, setSquare]);
 
     useEffect(() => {
         setMenu(false);
