@@ -13,6 +13,12 @@
         &-center {
             align-self: center;
         }
+
+        &-big {
+            font-size: 26px;
+            color: $brown;
+            font-weight: 200;
+        }
     }
 
     &__input {
@@ -34,10 +40,11 @@
 
         // Доделать
         &-big {
-            height: 70px;
+            height: 50px;
             width: 450px;
             font-size: 32px;
-            padding: 5px;
+            padding: 10px 20px;
+            text-align: center;
         }
     }
 }

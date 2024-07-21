@@ -18,3 +18,4 @@ const squareSlice: StateCreator<SquareState & SquareActions> = (set) => ({
 });
 
 export const useSquareStore = create<SquareState & SquareActions>(squareSlice);
+export const square = useSquareStore.getState().square;

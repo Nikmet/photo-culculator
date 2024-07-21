@@ -16,7 +16,8 @@ const Input: FunctionComponent<InputProps> = ({ ...props }) => {
             <label
                 htmlFor={props.id}
                 className={classNames(styles["input__label"], [
-                    props.titlePosition === "center" ? styles["input__label-center"] : ""
+                    props.titlePosition === "center" ? styles["input__label-center"] : "",
+                    props.appearance === "big" ? styles["input__label-big"] : ""
                 ])}
             >
                 {props.label}
