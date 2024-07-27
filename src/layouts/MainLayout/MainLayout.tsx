@@ -6,7 +6,7 @@ import Menu from "../../components/Menu/Menu";
 import { useSquareStore } from "../../models/SquareStore";
 
 export function MainLayout() {
-    const { setSquare, square } = useSquareStore();
+    const { setSquare, setPerimeter, square } = useSquareStore();
     const [isMenu, setMenu] = useState<boolean>(false);
     const [width, setWidth] = useState<number | undefined>();
     const [height, setHeight] = useState<number | undefined>();
@@ -20,10 +20,11 @@ export function MainLayout() {
     useEffect(() => {
         if (width && height) {
             setSquare((width * height) / 1000000);
+            setPerimeter((width + height) * 2);
         } else {
-            setSquare(0);
+            setPerimeter(0);
         }
-    }, [width, height, setSquare]);
+    }, [width, height, setSquare, setPerimeter]);
 
     useEffect(() => {
         setMenu(false);
@@ -37,16 +38,20 @@ export function MainLayout() {
         setWidth(Number(e.target.value));
         if (width && height) {
             setSquare((width * height) / 1000000);
+            setPerimeter((width + height) * 2);
         } else {
             setSquare(0);
+            setPerimeter(0);
         }
     };
     const getHeight = (e: ChangeEvent<HTMLInputElement>) => {
         setHeight(Number(e.target.value));
         if (width && height) {
             setSquare((width * height) / 1000000);
+            setPerimeter((width + height) * 2);
         } else {
             setSquare(0);
+            setPerimeter(0);
         }
     };
 
