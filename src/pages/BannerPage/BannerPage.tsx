@@ -12,10 +12,10 @@ const BannerPage: FunctionComponent<BannerPageProps> = () => {
     const [b400, setB400] = useState<number | undefined>(400);
     const [luvers, setLuvers] = useState<number | undefined>(20);
     const [luversStep, setLuversStep] = useState<number | undefined>(500);
-    const [b300Total, setB300Total] = useState<number | undefined>(370);
-    const [b400Total, setB400Total] = useState<number | undefined>(400);
-    const [b300TotalLuvers, setB300TotalLuvers] = useState<number | undefined>(370);
-    const [b400TotalLuvers, setB400TotalLuvers] = useState<number | undefined>(400);
+    const [b300Total, setB300Total] = useState<number | undefined>(0);
+    const [b400Total, setB400Total] = useState<number | undefined>(0);
+    const [b300TotalLuvers, setB300TotalLuvers] = useState<number | undefined>(0);
+    const [b400TotalLuvers, setB400TotalLuvers] = useState<number | undefined>(0);
 
     useEffect(() => {
         document.title = "Баннер";

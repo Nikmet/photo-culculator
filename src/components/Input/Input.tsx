@@ -1,9 +1,9 @@
-import { FunctionComponent, InputHTMLAttributes } from "react";
+import { FunctionComponent, InputHTMLAttributes, ReactNode } from "react";
 import styles from "./Input.module.scss";
 import classNames from "classnames";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    label: string;
+    label: string | ReactNode;
     id: string;
     type: string;
     titlePosition?: "center" | "left" | undefined;

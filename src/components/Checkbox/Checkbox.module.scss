@@ -1,0 +1,43 @@
+@import "./../../index.scss";
+
+.checkbox {
+    appearance: none;
+    display: none;
+
+    &:checked + &-new::before {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 26px;
+        color: $brown;
+        font-weight: 300;
+        cursor: pointer;
+    }
+    &-new {
+        opacity: 0.5;
+        display: inline-block;
+        position: relative;
+        width: 30px;
+        height: 30px;
+        border: 5px solid $brown;
+        border-radius: 4px;
+
+        &::before {
+            content: "";
+            width: 23px;
+            height: 23px;
+            background-color: $brown;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0;
+            transition: $transition;
+        }
+    }
+}
