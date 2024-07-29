@@ -7,7 +7,7 @@ import { useSquareStore } from "../../models/SquareStore";
 
 interface TapePageProps {}
 
-const PLASTIC_PRICE = 2600;
+export const PLASTIC_PRICE = 2600;
 const MP_PRICE = 800;
 
 const TapePage: FunctionComponent<TapePageProps> = () => {

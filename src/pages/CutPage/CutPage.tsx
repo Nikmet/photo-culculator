@@ -5,6 +5,8 @@ import styles from "./CutPage.module.scss";
 import Title from "../../components/Title/Title";
 import Input from "../../components/Input/Input";
 import Checkbox from "../../components/Checkbox/Checkbox";
+import { useSquareStore } from "../../models/SquareStore";
+import { PLASTIC_PRICE } from "../TapePage/TapePage";
 
 interface CutPageProps {}
 
@@ -24,6 +26,7 @@ const options: IOption[] = [
 ];
 
 const CutPage: FunctionComponent<CutPageProps> = () => {
+    const { square } = useSquareStore();
     const [difficulty, setDifficulty] = useState<string | null>("easy");
     const [plywood, setPlywood] = useState<number | undefined>(900);
     const [acrylic, setAcrylic] = useState<number | undefined>(25000);
@@ -34,6 +37,21 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
     useEffect(() => {
         document.title = "Лазерная резка";
     }, []);
+
+    useEffect(() => {
+        if (plywood && square && difficulty === "easy") {
+            setPlywoodTotal(square * plywood * 3);
+        } else if (plywood && square && difficulty === "medium") {
+            setPlywoodTotal(square * plywood * 5);
+        } else if (plywood && square && difficulty === "hard") {
+            setPlywoodTotal(square * plywood * 7);
+        }
+        if (acrylic && square && withEngraving) {
+            setAcrylicTotal(square * acrylic + PLASTIC_PRICE * square);
+        } else if (acrylic && square) {
+            setAcrylicTotal(square * acrylic);
+        }
+    }, [plywood, square, difficulty, acrylic, withEngraving]);
 
     const getValue = () => {
         return difficulty ? options.find((c) => c.value === difficulty) : "";
@@ -53,7 +71,9 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
                         type="number"
                         label="Фанера за 1 м2(Рублей)"
                         appearance="big"
-                        onChange={(e) => setPlywood(Number(e.target.value))}
+                        onChange={(e) => {
+                            setPlywood(Number(e.target.value));
+                        }}
                         value={plywood ? plywood : ""}
                     />
                     <SelectInput
