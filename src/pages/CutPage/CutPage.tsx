@@ -1,4 +1,5 @@
 import { FunctionComponent, useEffect } from "react";
+import SelectInput from "../../components/Select/Select";
 
 interface CutPageProps {}
 
@@ -7,7 +8,11 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
         document.title = "Лазерная резка";
     }, []);
 
-    return <>cut page</>;
+    return (
+        <>
+            <SelectInput id="difficulty" label="Сложность" appearance="big" />
+        </>
+    );
 };
 
 export default CutPage;

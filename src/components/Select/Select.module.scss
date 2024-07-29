@@ -1,0 +1,24 @@
+@import "./../../index.scss";
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__label {
+        font-size: 20px;
+        color: $white;
+        font-weight: 200;
+
+        &-center {
+            align-self: center;
+        }
+
+        &-big {
+            font-size: 26px;
+            color: $brown;
+            font-weight: 200;
+            width: 450px;
+        }
+    }
+}

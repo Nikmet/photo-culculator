@@ -1,0 +1,105 @@
+@import "./../../index.scss";
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(0px);
+    }
+    50% {
+        opacity: 0.3;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+// @keyframes fadeOut {
+//     0% {
+//         opacity: 1;
+//         transform: translateY(0px);
+//     }
+//     50% {
+//         opacity: 0.5;
+//         transform: translateY(10px);
+//     }
+//     100% {
+//         opacity: 0;
+//         transform: translateY(0px);
+//     }
+// }
+
+.custom-select {
+    &__control {
+        background-color: #fff !important;
+        width: 500px !important;
+        height: 60px !important;
+        border: 2px solid $brown !important;
+        border-radius: 5px !important;
+        cursor: pointer !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    &__menu {
+        width: 500px !important;
+        border-radius: 5px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        transition: all 0.3s;
+        animation: fadeIn 0.3s ease-out;
+        top: 65px !important;
+
+        // &--close {
+        //     animation: fadeOut 0.3s ease-out;
+        // }
+    }
+
+    &__option {
+        font-size: 15px !important;
+        cursor: pointer !important;
+        transition: all 0.3s;
+        &--is-focused {
+            background-color: #fff !important;
+        }
+        &--is-selected {
+            background-color: #fff !important;
+            color: #000 !important;
+            &:hover {
+                background-color: lighten(#693f00, 0.4) !important;
+                color: #fff;
+            }
+        }
+        &:hover {
+            background-color: lighten($brown, 0.4) !important;
+            color: #fff !important;
+        }
+    }
+
+    &__value-container {
+        padding: 0px 20px !important;
+    }
+
+    &__single-value {
+        color: #000 !important;
+        font-size: 20px !important;
+        line-height: normal !important;
+    }
+
+    &__input-container {
+        height: 60px !important;
+    }
+
+    &__indicator {
+        color: #000 !important;
+
+        &:hover {
+            color: $brown !important;
+        }
+
+        &-separator {
+            display: none !important;
+        }
+    }
+}
