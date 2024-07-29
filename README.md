@@ -10,6 +10,7 @@
 -   React Router для роутинга
 -   Zustand выбран в роли state менеджера
 -   Vite для сборки и дебагинга проекта
+-   ESLint, Prettier, Scss
 
 ---
 
