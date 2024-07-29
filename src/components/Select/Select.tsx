@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode, useState } from "react";
+import { FunctionComponent, ReactNode } from "react";
 import styles from "./Select.module.scss";
 import classNames from "classnames";
 import Select, { SingleValue } from "react-select";
@@ -8,39 +8,17 @@ interface SelectInputProps {
     label: string | ReactNode;
     appearance?: "small" | "big" | undefined;
     id: string;
+    onChange: (newValue: SingleValue<IOption | string>) => void;
+    value: IOption | "" | undefined;
+    options: IOption[];
 }
 
-interface IOption {
+export interface IOption {
     value: string;
     label: string;
 }
 
-const options: IOption[] = [
-    {
-        value: "easy",
-        label: "Легкий"
-    },
-    {
-        value: "medium",
-        label: "Средний"
-    },
-    {
-        value: "hard",
-        label: "Сложный"
-    }
-];
-
 const SelectInput: FunctionComponent<SelectInputProps> = ({ ...props }) => {
-    const [difficulty, setDifficulty] = useState<string | null>("easy");
-
-    const getValue = () => {
-        return difficulty ? options.find((c) => c.value === difficulty) : "";
-    };
-
-    const onChange = (newValue: SingleValue<IOption | string>) => {
-        setDifficulty((newValue as IOption).value);
-    };
-
     return (
         <div className={styles["input"]}>
             <label
@@ -53,9 +31,9 @@ const SelectInput: FunctionComponent<SelectInputProps> = ({ ...props }) => {
             </label>
             <Select
                 id={props.id}
-                options={options}
-                value={getValue()}
-                onChange={onChange}
+                options={props.options}
+                value={props.value}
+                onChange={props.onChange}
                 classNamePrefix="custom-select"
                 isSearchable={false}
             />
