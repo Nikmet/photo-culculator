@@ -98,14 +98,14 @@ const TermoPage: FunctionComponent<TermoPageProps> = () => {
                     <Input
                         id="tf-price"
                         type="number"
-                        label="Фанера (Рублей)"
+                        label="Термоткань (Рублей)"
                         appearance="big"
                         value={tfTotal}
                     />
                     <Input
                         id="tp-price"
                         type="number"
-                        label="Акрил (Рублей)"
+                        label="Термопленка (Рублей)"
                         appearance="big"
                         value={tpTotal}
                     />
