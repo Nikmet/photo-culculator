@@ -58,7 +58,7 @@ const TermoPage: FunctionComponent<TermoPageProps> = () => {
 
     return (
         <>
-            <Title appearance="title">ЛАЗЕРНАЯ РЕЗКА</Title>
+            <Title appearance="title">ТЕРМОТРАНСФЕР</Title>
             <div className={styles.price}>
                 <div className={styles["price__wrapper"]}>
                     <Input
