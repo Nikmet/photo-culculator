@@ -11,6 +11,7 @@ interface SelectInputProps {
     onChange: (newValue: SingleValue<IOption | string>) => void;
     value: IOption | "" | undefined;
     options: IOption[];
+    titlePosition?: "center" | "left" | undefined;
 }
 
 export interface IOption {
@@ -24,6 +25,7 @@ const SelectInput: FunctionComponent<SelectInputProps> = ({ ...props }) => {
             <label
                 htmlFor={props.id}
                 className={classNames(styles["input__label"], [
+                    props.titlePosition === "center" ? styles["input__label-center"] : "",
                     props.appearance === "big" ? styles["input__label-big"] : ""
                 ])}
             >

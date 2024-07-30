@@ -1,0 +1,15 @@
+.price {
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 20px;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.center {
+    align-self: center;
+}

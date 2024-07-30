@@ -45,11 +45,15 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
             setPlywoodTotal(square * plywood * 5);
         } else if (plywood && square && difficulty === "hard") {
             setPlywoodTotal(square * plywood * 7);
+        } else {
+            setPlywoodTotal(undefined);
         }
         if (acrylic && square && withEngraving) {
             setAcrylicTotal(square * acrylic + PLASTIC_PRICE * square);
         } else if (acrylic && square) {
             setAcrylicTotal(square * acrylic);
+        } else {
+            setAcrylicTotal(undefined);
         }
     }, [plywood, square, difficulty, acrylic, withEngraving]);
 
