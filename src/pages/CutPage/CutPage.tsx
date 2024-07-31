@@ -7,6 +7,7 @@ import Input from "../../components/Input/Input";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import { useSquareStore } from "../../models/SquareStore";
 import { PLASTIC_PRICE } from "../TapePage/TapePage";
+import { roundValue } from "../../helpers/roundValue";
 
 interface CutPageProps {}
 
@@ -40,18 +41,18 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
 
     useEffect(() => {
         if (plywood && square && difficulty === "easy") {
-            setPlywoodTotal(square * plywood * 3);
+            setPlywoodTotal(roundValue(square * plywood * 3));
         } else if (plywood && square && difficulty === "medium") {
-            setPlywoodTotal(square * plywood * 5);
+            setPlywoodTotal(roundValue(square * plywood * 5));
         } else if (plywood && square && difficulty === "hard") {
-            setPlywoodTotal(square * plywood * 7);
+            setPlywoodTotal(roundValue(square * plywood * 7));
         } else {
             setPlywoodTotal(undefined);
         }
         if (acrylic && square && withEngraving) {
-            setAcrylicTotal(square * acrylic + PLASTIC_PRICE * square);
+            setAcrylicTotal(roundValue(square * acrylic + PLASTIC_PRICE * square));
         } else if (acrylic && square) {
-            setAcrylicTotal(square * acrylic);
+            setAcrylicTotal(roundValue(square * acrylic));
         } else {
             setAcrylicTotal(undefined);
         }

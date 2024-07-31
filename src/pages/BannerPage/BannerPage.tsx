@@ -3,13 +3,14 @@ import Title from "../../components/Title/Title";
 import styles from "./BannerPage.module.scss";
 import Input from "../../components/Input/Input";
 import { useSquareStore } from "../../models/SquareStore";
+import { roundValue } from "../../helpers/roundValue";
 
 interface BannerPageProps {}
 
 const BannerPage: FunctionComponent<BannerPageProps> = () => {
     const { square, perimeter } = useSquareStore();
     const [b300, setB300] = useState<number | undefined>(370);
-    const [b400, setB400] = useState<number | undefined>(400);
+    const [b400, setB400] = useState<number | undefined>(440);
     const [luvers, setLuvers] = useState<number | undefined>(20);
     const [luversStep, setLuversStep] = useState<number | undefined>(500);
     const [b300Total, setB300Total] = useState<number | undefined>(0);
@@ -24,10 +25,10 @@ const BannerPage: FunctionComponent<BannerPageProps> = () => {
     useEffect(() => {
         if (luversStep && luvers && b400 && b300) {
             const luversCount = perimeter / luversStep;
-            setB300Total(b300 * square);
-            setB400Total(b400 * square);
-            setB300TotalLuvers(b300 * square + luversCount * luvers);
-            setB400TotalLuvers(b400 * square + luversCount * luvers);
+            setB300Total(roundValue(b300 * square));
+            setB400Total(roundValue(b400 * square));
+            setB300TotalLuvers(roundValue(b300 * square + luversCount * luvers));
+            setB400TotalLuvers(roundValue(b400 * square + luversCount * luvers));
         } else {
             setB300Total(undefined);
             setB400Total(undefined);
@@ -51,7 +52,7 @@ const BannerPage: FunctionComponent<BannerPageProps> = () => {
                             const luversCount = perimeter / luversStep;
                             setB300Total(Number(e.target.value) * square);
                             setB300TotalLuvers(
-                                Number(e.target.value) * square + luversCount * luvers
+                                roundValue(Number(e.target.value) * square + luversCount * luvers)
                             );
                         } else {
                             setB300(undefined);
@@ -71,7 +72,7 @@ const BannerPage: FunctionComponent<BannerPageProps> = () => {
                             const luversCount = perimeter / luversStep;
                             setB400Total(Number(e.target.value) * square);
                             setB400TotalLuvers(
-                                Number(e.target.value) * square + luversCount * luvers
+                                roundValue(Number(e.target.value) * square + luversCount * luvers)
                             );
                         } else {
                             setB400(undefined);
@@ -89,8 +90,8 @@ const BannerPage: FunctionComponent<BannerPageProps> = () => {
                         setLuvers(Number(e.target.value));
                         if (luversStep && luvers && b400 && b300) {
                             const luversCount = perimeter / luversStep;
-                            setB300TotalLuvers(b300 * square + luversCount * luvers);
-                            setB400TotalLuvers(b400 * square + luversCount * luvers);
+                            setB300TotalLuvers(roundValue(b300 * square + luversCount * luvers));
+                            setB400TotalLuvers(roundValue(b400 * square + luversCount * luvers));
                         } else {
                             // setLuvers(undefined);
                             setB400TotalLuvers(undefined);
@@ -108,8 +109,8 @@ const BannerPage: FunctionComponent<BannerPageProps> = () => {
                         setLuversStep(Number(e.target.value));
                         if (e.target.value && luversStep && luvers && b400 && b300) {
                             const luversCount = perimeter / luversStep;
-                            setB300TotalLuvers(b300 * square + luversCount * luvers);
-                            setB400TotalLuvers(b400 * square + luversCount * luvers);
+                            setB300TotalLuvers(roundValue(b300 * square + luversCount * luvers));
+                            setB400TotalLuvers(roundValue(b400 * square + luversCount * luvers));
                         } else {
                             // setLuversStep(undefined);
                             setB400TotalLuvers(undefined);

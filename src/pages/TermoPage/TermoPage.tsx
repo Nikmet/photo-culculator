@@ -5,6 +5,7 @@ import Title from "../../components/Title/Title";
 import styles from "./TermoPage.module.scss";
 import { SingleValue } from "react-select";
 import { useSquareStore } from "../../models/SquareStore";
+import { roundValue } from "../../helpers/roundValue";
 
 interface TermoPageProps {}
 
@@ -33,16 +34,16 @@ const TermoPage: FunctionComponent<TermoPageProps> = () => {
 
     useEffect(() => {
         if (tf && square && difficulty === "easy") {
-            setTFTotal(tf * square * 3);
+            setTFTotal(roundValue(tf * square * 3));
         } else if (tf && square && difficulty === "hard") {
-            setTFTotal(tf * square * 5);
+            setTFTotal(roundValue(tf * square * 5));
         } else {
             setTFTotal(undefined);
         }
         if (tp && square && difficulty === "easy") {
-            setTPTotal(tp * square * 3);
+            setTPTotal(roundValue(tp * square * 3));
         } else if (tp && square && difficulty === "hard") {
-            setTPTotal(tp * square * 5);
+            setTPTotal(roundValue(tp * square * 5));
         } else {
             setTPTotal(undefined);
         }

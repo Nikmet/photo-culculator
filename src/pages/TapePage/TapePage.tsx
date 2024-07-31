@@ -4,6 +4,7 @@ import styles from "./TapePage.module.scss";
 import Input from "../../components/Input/Input";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import { useSquareStore } from "../../models/SquareStore";
+import { roundValue } from "../../helpers/roundValue";
 
 interface TapePageProps {}
 
@@ -26,25 +27,25 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
 
     useEffect(() => {
         if (lfp && pc) {
-            setLFPTotal(square * lfp);
-            setPCTotal(square * pc);
+            setLFPTotal(roundValue(square * lfp));
+            setPCTotal(roundValue(square * pc));
         }
     }, [lfp, pc, square]);
 
     useEffect(() => {
         if (withPlastic && lfp) {
-            setLFPTotal(square * lfp + PLASTIC_PRICE * square);
+            setLFPTotal(roundValue(square * lfp + PLASTIC_PRICE * square));
         } else {
-            setLFPTotal(lfp ? square * lfp : undefined);
+            setLFPTotal(lfp ? roundValue(square * lfp) : undefined);
         }
         if (withPlastic2 && withMF && pc) {
-            setPCTotal(square * pc + PLASTIC_PRICE * square + MP_PRICE * square);
+            setPCTotal(roundValue(square * pc + PLASTIC_PRICE * square + MP_PRICE * square));
         } else if (withPlastic2 && pc) {
-            setPCTotal(square * pc + PLASTIC_PRICE * square);
+            setPCTotal(roundValue(square * pc + PLASTIC_PRICE * square));
         } else if (withMF && pc) {
-            setPCTotal(square * pc + MP_PRICE * square);
+            setPCTotal(roundValue(square * pc + MP_PRICE * square));
         } else {
-            setPCTotal(pc ? square * pc : undefined);
+            setPCTotal(pc ? roundValue(square * pc) : undefined);
         }
     }, [lfp, withPlastic, square, withPlastic2, pc, withMF]);
 
