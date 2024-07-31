@@ -27,25 +27,45 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
 
     useEffect(() => {
         if (lfp && pc) {
-            setLFPTotal(roundValue(square * lfp));
-            setPCTotal(roundValue(square * pc));
+            setLFPTotal(roundValue(square * lfp) <= 100 ? 100 : roundValue(square * lfp));
+            setPCTotal(roundValue(square * pc) <= 100 ? 100 : roundValue(square * pc));
         }
     }, [lfp, pc, square]);
 
     useEffect(() => {
         if (withPlastic && lfp) {
-            setLFPTotal(roundValue(square * lfp + PLASTIC_PRICE * square));
+            setLFPTotal(
+                roundValue(square * lfp + PLASTIC_PRICE * square) <= 100
+                    ? 100
+                    : roundValue(square * lfp + PLASTIC_PRICE * square)
+            );
         } else {
-            setLFPTotal(lfp ? roundValue(square * lfp) : undefined);
+            setLFPTotal(
+                lfp ? (roundValue(square * lfp) <= 100 ? 100 : roundValue(square * lfp)) : undefined
+            );
         }
         if (withPlastic2 && withMF && pc) {
-            setPCTotal(roundValue(square * pc + PLASTIC_PRICE * square + MP_PRICE * square));
+            setPCTotal(
+                roundValue(square * pc + PLASTIC_PRICE * square + MP_PRICE * square) <= 100
+                    ? 100
+                    : roundValue(square * pc + PLASTIC_PRICE * square + MP_PRICE * square)
+            );
         } else if (withPlastic2 && pc) {
-            setPCTotal(roundValue(square * pc + PLASTIC_PRICE * square));
+            setPCTotal(
+                roundValue(square * pc + PLASTIC_PRICE * square) <= 100
+                    ? 100
+                    : roundValue(square * pc + PLASTIC_PRICE * square)
+            );
         } else if (withMF && pc) {
-            setPCTotal(roundValue(square * pc + MP_PRICE * square));
+            setPCTotal(
+                roundValue(square * pc + MP_PRICE * square) <= 100
+                    ? 100
+                    : roundValue(square * pc + MP_PRICE * square)
+            );
         } else {
-            setPCTotal(pc ? roundValue(square * pc) : undefined);
+            setPCTotal(
+                pc ? (roundValue(square * pc) <= 100 ? 100 : roundValue(square * pc)) : undefined
+            );
         }
     }, [lfp, withPlastic, square, withPlastic2, pc, withMF]);
 
@@ -75,7 +95,15 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
                         appearance="big"
                         onChange={(e) => {
                             setLFP(Number(e.target.value));
-                            setLFPTotal(square * Number(e.target.value));
+                            setLFPTotal(
+                                roundValue(
+                                    square * Number(e.target.value) + PLASTIC_PRICE * square
+                                ) <= 100
+                                    ? 100
+                                    : roundValue(
+                                          square * Number(e.target.value) + PLASTIC_PRICE * square
+                                      )
+                            );
                         }}
                         value={lfp ? lfp : ""}
                     />
@@ -100,7 +128,14 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
                         appearance="big"
                         onChange={(e) => {
                             setPC(Number(e.target.value));
-                            setPCTotal(square * Number(e.target.value));
+                            setPCTotal(
+                                roundValue(square * Number(e.target.value) + MP_PRICE * square) <=
+                                    100
+                                    ? 100
+                                    : roundValue(
+                                          square * Number(e.target.value) + MP_PRICE * square
+                                      )
+                            );
                         }}
                         value={pc ? pc : ""}
                     />

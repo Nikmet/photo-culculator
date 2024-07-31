@@ -19,8 +19,8 @@ export function MainLayout() {
 
     useEffect(() => {
         if (width && height) {
-            setSquare(Number(((width * height) / 1000000).toFixed(2)));
-            setPerimeter(Number(((width + height) * 2).toFixed(2)));
+            setSquare(Number(((width * height) / 1000000).toFixed(3)));
+            setPerimeter(Number(((width + height) * 2).toFixed(3)));
         } else {
             setPerimeter(0);
         }
@@ -37,8 +37,8 @@ export function MainLayout() {
     const getWidth = (e: ChangeEvent<HTMLInputElement>) => {
         setWidth(Number(e.target.value));
         if (width && height) {
-            setSquare(Number(((width * height) / 1000000).toFixed(2)));
-            setPerimeter(Number(((width + height) * 2).toFixed(2)));
+            setSquare(Number(((width * height) / 1000000).toFixed(3)));
+            setPerimeter(Number(((width + height) * 2).toFixed(3)));
         } else {
             setSquare(0);
             setPerimeter(0);
@@ -47,8 +47,8 @@ export function MainLayout() {
     const getHeight = (e: ChangeEvent<HTMLInputElement>) => {
         setHeight(Number(e.target.value));
         if (width && height) {
-            setSquare(Number(((width * height) / 1000000).toFixed(2)));
-            setPerimeter(Number(((width + height) * 2).toFixed(2)));
+            setSquare(Number(((width * height) / 1000000).toFixed(3)));
+            setPerimeter(Number(((width + height) * 2).toFixed(3)));
         } else {
             setSquare(0);
             setPerimeter(0);

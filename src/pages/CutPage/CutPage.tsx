@@ -41,18 +41,30 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
 
     useEffect(() => {
         if (plywood && square && difficulty === "easy") {
-            setPlywoodTotal(roundValue(square * plywood * 3));
+            setPlywoodTotal(
+                roundValue(square * plywood * 3) <= 100 ? 100 : roundValue(square * plywood * 3)
+            );
         } else if (plywood && square && difficulty === "medium") {
-            setPlywoodTotal(roundValue(square * plywood * 5));
+            setPlywoodTotal(
+                roundValue(square * plywood * 5) <= 100 ? 100 : roundValue(square * plywood * 5)
+            );
         } else if (plywood && square && difficulty === "hard") {
-            setPlywoodTotal(roundValue(square * plywood * 7));
+            setPlywoodTotal(
+                roundValue(square * plywood * 7) <= 100 ? 100 : roundValue(square * plywood * 7)
+            );
         } else {
             setPlywoodTotal(undefined);
         }
         if (acrylic && square && withEngraving) {
-            setAcrylicTotal(roundValue(square * acrylic + PLASTIC_PRICE * square));
+            setAcrylicTotal(
+                roundValue(square * acrylic + PLASTIC_PRICE * square) <= 100
+                    ? 100
+                    : roundValue(square * acrylic + PLASTIC_PRICE * square)
+            );
         } else if (acrylic && square) {
-            setAcrylicTotal(roundValue(square * acrylic));
+            setAcrylicTotal(
+                roundValue(square * acrylic) <= 100 ? 100 : roundValue(square * acrylic)
+            );
         } else {
             setAcrylicTotal(undefined);
         }

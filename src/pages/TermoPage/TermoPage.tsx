@@ -34,16 +34,16 @@ const TermoPage: FunctionComponent<TermoPageProps> = () => {
 
     useEffect(() => {
         if (tf && square && difficulty === "easy") {
-            setTFTotal(roundValue(tf * square * 3));
+            setTFTotal(roundValue(tf * square * 3) <= 100 ? 100 : roundValue(tf * square * 3));
         } else if (tf && square && difficulty === "hard") {
-            setTFTotal(roundValue(tf * square * 5));
+            setTFTotal(roundValue(tf * square * 5) <= 100 ? 100 : roundValue(tf * square * 5));
         } else {
             setTFTotal(undefined);
         }
         if (tp && square && difficulty === "easy") {
-            setTPTotal(roundValue(tp * square * 3));
+            setTPTotal(roundValue(tp * square * 3) <= 100 ? 100 : roundValue(tp * square * 3));
         } else if (tp && square && difficulty === "hard") {
-            setTPTotal(roundValue(tp * square * 5));
+            setTPTotal(roundValue(tp * square * 5) <= 100 ? 100 : roundValue(tp * square * 5));
         } else {
             setTPTotal(undefined);
         }
