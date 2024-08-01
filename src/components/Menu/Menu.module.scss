@@ -27,6 +27,11 @@
     text-decoration: none;
     transition: $transition;
 
+    &__admin {
+        text-decoration: underline;
+        margin-top: 65vh;
+    }
+
     &:hover {
         opacity: 0.9;
     }

@@ -7,6 +7,7 @@ import BannerPage from "./pages/BannerPage/BannerPage";
 import TapePage from "./pages/TapePage/TapePage";
 import CutPage from "./pages/CutPage/CutPage";
 import TermoPage from "./pages/TermoPage/TermoPage";
+import AdminPage from "./pages/AdminPage/AdminPage";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
                 element: <TermoPage />
             }
         ]
+    },
+    {
+        path: "/admin",
+        element: <AdminPage />
     }
 ]);
 

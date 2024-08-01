@@ -22,6 +22,9 @@ const Menu: FunctionComponent<MenuProps> = ({ isActive }) => {
             <NavLink className={styles.link} to="/termo">
                 Термотрансфер
             </NavLink>
+            <NavLink className={classNames(styles.link, styles["link__admin"])} to="/admin">
+                Панель администратора
+            </NavLink>
         </div>
     );
 };
