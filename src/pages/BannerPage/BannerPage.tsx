@@ -11,8 +11,8 @@ interface BannerPageProps {}
 const BannerPage: FunctionComponent<BannerPageProps> = () => {
     const { square, perimeter } = useSquareStore();
     const [b300, setB300] = useState<number | undefined>(getLocalStorageValue("b300"));
-    const [b400, setB400] = useState<number | undefined>(440);
-    const [luvers, setLuvers] = useState<number | undefined>(20);
+    const [b400, setB400] = useState<number | undefined>(getLocalStorageValue("b400"));
+    const [luvers, setLuvers] = useState<number | undefined>(getLocalStorageValue("luv"));
     const [luversStep, setLuversStep] = useState<number | undefined>(500);
     const [b300Total, setB300Total] = useState<number | undefined>(0);
     const [b400Total, setB400Total] = useState<number | undefined>(0);

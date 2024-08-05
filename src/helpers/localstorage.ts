@@ -1,52 +1,64 @@
 export interface ILocalStorageValue {
     name: string;
     value: number;
+    label: string;
 }
 
 export const INITIAL_ARRAY: ILocalStorageValue[] = [
     {
         name: "b300",
-        value: 0
+        value: 0,
+        label: "Б-300"
     },
     {
         name: "b400",
-        value: 0
+        value: 0,
+        label: "Б-400"
     },
     {
         name: "luv",
-        value: 0
+        value: 0,
+        label: "Люверсы"
     },
     {
         name: "lfp",
-        value: 0
+        value: 0,
+        label: "Широкоформатная печать"
     },
     {
         name: "plastic",
-        value: 0
+        value: 0,
+        label: "Пластик"
     },
     {
         name: "pc",
-        value: 0
+        value: 0,
+        label: "Плоттерная резка"
     },
     {
         name: "mf",
-        value: 0
+        value: 0,
+        label: "Монтажная пленка"
     },
     {
         name: "plywood",
-        value: 0
+        value: 0,
+        label: "Фанера"
     },
     {
         name: "acrylic",
-        value: 0
+        value: 0,
+        label: "Акрил"
     },
     {
         name: "tf",
-        value: 0
+        value: 0,
+        label: "Термоткань"
     },
     {
         name: "tp",
-        value: 0
+        value: 0,
+        label: "Термопленка"
     }
 ];
 
