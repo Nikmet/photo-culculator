@@ -8,6 +8,7 @@ import TapePage from "./pages/TapePage/TapePage";
 import CutPage from "./pages/CutPage/CutPage";
 import TermoPage from "./pages/TermoPage/TermoPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
+import { INITIAL_ARRAY } from "./helpers/localstorage";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
         element: <AdminPage />
     }
 ]);
+
+if (!localStorage.getItem("data")) {
+    localStorage.setItem("data", JSON.stringify(INITIAL_ARRAY));
+}
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>

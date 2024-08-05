@@ -4,12 +4,13 @@ import styles from "./BannerPage.module.scss";
 import Input from "../../components/Input/Input";
 import { useSquareStore } from "../../models/SquareStore";
 import { roundValue } from "../../helpers/roundValue";
+import { getLocalStorageValue } from "../../helpers/localstorage";
 
 interface BannerPageProps {}
 
 const BannerPage: FunctionComponent<BannerPageProps> = () => {
     const { square, perimeter } = useSquareStore();
-    const [b300, setB300] = useState<number | undefined>(370);
+    const [b300, setB300] = useState<number | undefined>(getLocalStorageValue("b300"));
     const [b400, setB400] = useState<number | undefined>(440);
     const [luvers, setLuvers] = useState<number | undefined>(20);
     const [luversStep, setLuversStep] = useState<number | undefined>(500);
