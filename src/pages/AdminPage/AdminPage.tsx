@@ -1,8 +1,15 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import SelectInput, { IOption } from "../../components/Select/Select";
 import { SingleValue } from "react-select";
-import { ILocalStorageValue, setLocalStorageValue } from "../../helpers/localstorage";
+import {
+    getLocalStorageValue,
+    ILocalStorageValue,
+    INITIAL_ARRAY,
+    setLocalStorageValue
+} from "../../helpers/localstorage";
 import Input from "../../components/Input/Input";
+import styles from "./AdminPage.module.scss";
+import { NavLink } from "react-router-dom";
 
 interface AdminPageProps {}
 
@@ -14,7 +21,9 @@ const AdminPage: FunctionComponent<AdminPageProps> = () => {
 
     useEffect(() => {
         const data: ILocalStorageValue[] = JSON.parse(localStorage.getItem("data") ?? "");
-        data.forEach((v) => options.push({ value: v.name, label: v.label }));
+        if (options.length === 0) {
+            data.forEach((v) => options.push({ value: v.name, label: v.label }));
+        }
     }, []);
 
     const getValue = () => {
@@ -26,13 +35,29 @@ const AdminPage: FunctionComponent<AdminPageProps> = () => {
     };
 
     const onClick = () => {
+        const valueName = INITIAL_ARRAY.find((o) => o.name === input)?.label;
         if (input && value) {
-            setLocalStorageValue(input, value);
+            if (
+                confirm(
+                    `Вы уверен что хотите поменять цену ${valueName} c ${getLocalStorageValue(
+                        input
+                    )} на ${value}?`
+                )
+            ) {
+                setLocalStorageValue(input, value);
+                alert("Данные изменены");
+                const clearingInput: HTMLInputElement | null = document.querySelector("#input");
+                if (clearingInput) {
+                    clearingInput.value = "";
+                }
+            }
+        } else {
+            alert("Введите данные!");
         }
     };
 
     return (
-        <>
+        <div className={styles.wrapper}>
             <SelectInput
                 options={options}
                 id="cdf"
@@ -43,16 +68,19 @@ const AdminPage: FunctionComponent<AdminPageProps> = () => {
                 value={getValue()}
             />
             <Input
-                id="b300"
+                id="input"
                 type="number"
                 label="Начальное значение"
                 appearance="big"
                 titlePosition="center"
                 onChange={(e) => setValue(Number(e.target.value))}
-                value={value}
+                value={value ? value : undefined}
             />
-            <button onClick={onClick}>Записать</button>
-        </>
+            <button className={styles.button} onClick={onClick}>
+                Записать
+            </button>
+            <NavLink to="/">На главную</NavLink>
+        </div>
     );
 };
 

@@ -6,8 +6,8 @@ import Title from "../../components/Title/Title";
 import Input from "../../components/Input/Input";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import { useSquareStore } from "../../models/SquareStore";
-import { PLASTIC_PRICE } from "../TapePage/TapePage";
 import { roundValue } from "../../helpers/roundValue";
+import { getLocalStorageValue } from "../../helpers/localstorage";
 
 interface CutPageProps {}
 
@@ -29,14 +29,18 @@ const options: IOption[] = [
 const CutPage: FunctionComponent<CutPageProps> = () => {
     const { square } = useSquareStore();
     const [difficulty, setDifficulty] = useState<string | null>("easy");
-    const [plywood, setPlywood] = useState<number | undefined>(900);
-    const [acrylic, setAcrylic] = useState<number | undefined>(25000);
+    const [plywood, setPlywood] = useState<number | undefined>(getLocalStorageValue("plywood"));
+    const [acrylic, setAcrylic] = useState<number | undefined>(getLocalStorageValue("acrylic"));
     const [withEngraving, setWithEngraving] = useState<boolean>(false);
     const [plywoodTotal, setPlywoodTotal] = useState<number | undefined>(0);
     const [acrylicTotal, setAcrylicTotal] = useState<number | undefined>(0);
 
     useEffect(() => {
         document.title = "Лазерная резка";
+
+        if (!getLocalStorageValue("env")) {
+            alert("Цена гравировки не указана");
+        }
     }, []);
 
     useEffect(() => {
@@ -57,9 +61,9 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
         }
         if (acrylic && square && withEngraving) {
             setAcrylicTotal(
-                roundValue(square * acrylic + PLASTIC_PRICE * square) <= 100
+                roundValue(square * acrylic + getLocalStorageValue("env")) <= 100
                     ? 100
-                    : roundValue(square * acrylic + PLASTIC_PRICE * square)
+                    : roundValue(square * acrylic + getLocalStorageValue("env"))
             );
         } else if (acrylic && square) {
             setAcrylicTotal(
@@ -113,7 +117,7 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
                     />
                     <Checkbox
                         id="withPlastic"
-                        label="С пластиком"
+                        label="С гравировкой"
                         onChange={(e) => {
                             if (e.target.checked) {
                                 setWithEngraving(true);

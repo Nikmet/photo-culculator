@@ -6,6 +6,7 @@ import styles from "./TermoPage.module.scss";
 import { SingleValue } from "react-select";
 import { useSquareStore } from "../../models/SquareStore";
 import { roundValue } from "../../helpers/roundValue";
+import { getLocalStorageValue } from "../../helpers/localstorage";
 
 interface TermoPageProps {}
 
@@ -23,8 +24,8 @@ const options: IOption[] = [
 const TermoPage: FunctionComponent<TermoPageProps> = () => {
     const { square } = useSquareStore();
     const [difficulty, setDifficulty] = useState<string | null>("easy");
-    const [tf, setTF] = useState<number | undefined>(6000);
-    const [tp, setTP] = useState<number | undefined>(6000);
+    const [tf, setTF] = useState<number | undefined>(getLocalStorageValue("tf"));
+    const [tp, setTP] = useState<number | undefined>(getLocalStorageValue("tp"));
     const [tfTotal, setTFTotal] = useState<number | undefined>(0);
     const [tpTotal, setTPTotal] = useState<number | undefined>(0);
 

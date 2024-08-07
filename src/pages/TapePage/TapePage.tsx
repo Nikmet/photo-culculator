@@ -5,16 +5,17 @@ import Input from "../../components/Input/Input";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import { useSquareStore } from "../../models/SquareStore";
 import { roundValue } from "../../helpers/roundValue";
+import { getLocalStorageValue } from "../../helpers/localstorage";
 
 interface TapePageProps {}
 
-export const PLASTIC_PRICE = 2600;
+// export const PLASTIC_PRICE = 2600;
 const MP_PRICE = 800;
 
 const TapePage: FunctionComponent<TapePageProps> = () => {
     const { square } = useSquareStore();
-    const [lfp, setLFP] = useState<number | undefined>(1000);
-    const [pc, setPC] = useState<number | undefined>(1700);
+    const [lfp, setLFP] = useState<number | undefined>(getLocalStorageValue("lfp"));
+    const [pc, setPC] = useState<number | undefined>(getLocalStorageValue("pc"));
     const [lfpTotal, setLFPTotal] = useState<number | undefined>(0);
     const [pcTotal, setPCTotal] = useState<number | undefined>(0);
     const [withPlastic, setWithPlastic] = useState<boolean>(false);
@@ -35,9 +36,9 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
     useEffect(() => {
         if (withPlastic && lfp) {
             setLFPTotal(
-                roundValue(square * lfp + PLASTIC_PRICE * square) <= 100
+                roundValue(square * lfp + getLocalStorageValue("plastic") * square) <= 100
                     ? 100
-                    : roundValue(square * lfp + PLASTIC_PRICE * square)
+                    : roundValue(square * lfp + getLocalStorageValue("plastic") * square)
             );
         } else {
             setLFPTotal(
@@ -46,21 +47,21 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
         }
         if (withPlastic2 && withMF && pc) {
             setPCTotal(
-                roundValue(square * pc + PLASTIC_PRICE * square + MP_PRICE * square) <= 100
+                roundValue(square * pc + getLocalStorageValue("tf") * square + getLocalStorageValue("mf") * square) <= 100
                     ? 100
-                    : roundValue(square * pc + PLASTIC_PRICE * square + MP_PRICE * square)
+                    : roundValue(square * pc + getLocalStorageValue("plastic") * square + getLocalStorageValue("mf") * square)
             );
         } else if (withPlastic2 && pc) {
             setPCTotal(
-                roundValue(square * pc + PLASTIC_PRICE * square) <= 100
+                roundValue(square * pc + getLocalStorageValue("plastic") * square) <= 100
                     ? 100
-                    : roundValue(square * pc + PLASTIC_PRICE * square)
+                    : roundValue(square * pc + getLocalStorageValue("plastic") * square)
             );
         } else if (withMF && pc) {
             setPCTotal(
-                roundValue(square * pc + MP_PRICE * square) <= 100
+                roundValue(square * pc + getLocalStorageValue("mf") * square) <= 100
                     ? 100
-                    : roundValue(square * pc + MP_PRICE * square)
+                    : roundValue(square * pc + getLocalStorageValue("mf") * square)
             );
         } else {
             setPCTotal(
@@ -72,14 +73,14 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
     // const countAdd = () => {
     //     console.log(withPlastic);
     //     if (withPlastic && lfp) {
-    //         setLFPTotal(square * lfp + PLASTIC_PRICE * square);
+    //         setLFPTotal(square * lfp + getLocalStorageValue("plastic") * square);
     //     }
     //     if (withPlastic2 && withMF && pc) {
-    //         setPCTotal(square * pc + PLASTIC_PRICE * square + MP_PRICE * square);
+    //         setPCTotal(square * pc + getLocalStorageValue("plastic") * square + getLocalStorageValue("mf") * square);
     //     } else if (withPlastic2 && pc) {
-    //         setPCTotal(square * pc + PLASTIC_PRICE * square);
+    //         setPCTotal(square * pc + getLocalStorageValue("plastic") * square);
     //     } else if (withMF && pc) {
-    //         setPCTotal(square * pc + MP_PRICE * square);
+    //         setPCTotal(square * pc + getLocalStorageValue("mf") * square);
     //     }
     // };
 
@@ -97,11 +98,11 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
                             setLFP(Number(e.target.value));
                             setLFPTotal(
                                 roundValue(
-                                    square * Number(e.target.value) + PLASTIC_PRICE * square
+                                    square * Number(e.target.value) + getLocalStorageValue("plastic") * square
                                 ) <= 100
                                     ? 100
                                     : roundValue(
-                                          square * Number(e.target.value) + PLASTIC_PRICE * square
+                                          square * Number(e.target.value) + getLocalStorageValue("plastic") * square
                                       )
                             );
                         }}
@@ -129,11 +130,11 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
                         onChange={(e) => {
                             setPC(Number(e.target.value));
                             setPCTotal(
-                                roundValue(square * Number(e.target.value) + MP_PRICE * square) <=
+                                roundValue(square * Number(e.target.value) + getLocalStorageValue("mf") * square) <=
                                     100
                                     ? 100
                                     : roundValue(
-                                          square * Number(e.target.value) + MP_PRICE * square
+                                          square * Number(e.target.value) + getLocalStorageValue("mf") * square
                                       )
                             );
                         }}

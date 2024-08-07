@@ -59,6 +59,11 @@ export const INITIAL_ARRAY: ILocalStorageValue[] = [
         name: "tp",
         value: 0,
         label: "Термопленка"
+    },
+    {
+        name: "env",
+        value: 0,
+        label: "Гравировка"
     }
 ];
 
