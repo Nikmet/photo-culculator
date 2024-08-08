@@ -1,13 +1,65 @@
+@import "./../../index.scss";
+
+.container {
+    display: flex;
+    gap: 300px;
+    margin: 0 auto;
+    max-width: 1200px;
+    align-items: center;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
     gap: 30px;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     height: 100vh;
+
+    &-prices {
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        font-size: 16px;
+    }
 }
 
 .button {
     padding: 20px;
+    width: 400px;
+    background-color: $brown;
+    color: $white;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    font-size: 25px;
+    font-weight: 700;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+        opacity: 0.9;
+    }
+}
+
+.reset {
+    padding: 10px;
     width: 300px;
+    background-color: $white;
+    color: #ff8181;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+        opacity: 0.9;
+    }
 }

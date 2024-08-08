@@ -37,10 +37,6 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
 
     useEffect(() => {
         document.title = "Лазерная резка";
-
-        if (!getLocalStorageValue("env")) {
-            alert("Цена гравировки не указана");
-        }
     }, []);
 
     useEffect(() => {

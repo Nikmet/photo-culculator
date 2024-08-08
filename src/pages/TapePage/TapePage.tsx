@@ -10,7 +10,7 @@ import { getLocalStorageValue } from "../../helpers/localstorage";
 interface TapePageProps {}
 
 // export const PLASTIC_PRICE = 2600;
-const MP_PRICE = 800;
+// const MP_PRICE = 800;
 
 const TapePage: FunctionComponent<TapePageProps> = () => {
     const { square } = useSquareStore();
@@ -47,9 +47,17 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
         }
         if (withPlastic2 && withMF && pc) {
             setPCTotal(
-                roundValue(square * pc + getLocalStorageValue("tf") * square + getLocalStorageValue("mf") * square) <= 100
+                roundValue(
+                    square * pc +
+                        getLocalStorageValue("tf") * square +
+                        getLocalStorageValue("mf") * square
+                ) <= 100
                     ? 100
-                    : roundValue(square * pc + getLocalStorageValue("plastic") * square + getLocalStorageValue("mf") * square)
+                    : roundValue(
+                          square * pc +
+                              getLocalStorageValue("plastic") * square +
+                              getLocalStorageValue("mf") * square
+                      )
             );
         } else if (withPlastic2 && pc) {
             setPCTotal(
@@ -98,11 +106,13 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
                             setLFP(Number(e.target.value));
                             setLFPTotal(
                                 roundValue(
-                                    square * Number(e.target.value) + getLocalStorageValue("plastic") * square
+                                    square * Number(e.target.value) +
+                                        getLocalStorageValue("plastic") * square
                                 ) <= 100
                                     ? 100
                                     : roundValue(
-                                          square * Number(e.target.value) + getLocalStorageValue("plastic") * square
+                                          square * Number(e.target.value) +
+                                              getLocalStorageValue("plastic") * square
                                       )
                             );
                         }}
@@ -130,11 +140,14 @@ const TapePage: FunctionComponent<TapePageProps> = () => {
                         onChange={(e) => {
                             setPC(Number(e.target.value));
                             setPCTotal(
-                                roundValue(square * Number(e.target.value) + getLocalStorageValue("mf") * square) <=
-                                    100
+                                roundValue(
+                                    square * Number(e.target.value) +
+                                        getLocalStorageValue("mf") * square
+                                ) <= 100
                                     ? 100
                                     : roundValue(
-                                          square * Number(e.target.value) + getLocalStorageValue("mf") * square
+                                          square * Number(e.target.value) +
+                                              getLocalStorageValue("mf") * square
                                       )
                             );
                         }}

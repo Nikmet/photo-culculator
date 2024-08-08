@@ -9,6 +9,8 @@ import CutPage from "./pages/CutPage/CutPage";
 import TermoPage from "./pages/TermoPage/TermoPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import { INITIAL_ARRAY } from "./helpers/localstorage";
+import AdminLayout from "./layouts/AdminLayout/AdminLayout";
+import MinPricePage from "./pages/MinPricePage/MinPricePage";
 
 const router = createBrowserRouter([
     {
@@ -35,7 +37,17 @@ const router = createBrowserRouter([
     },
     {
         path: "/admin",
-        element: <AdminPage />
+        element: <AdminLayout />,
+        children: [
+            {
+                path: "/admin/startPrices",
+                element: <AdminPage />
+            },
+            {
+                path: "/admin/minPrice",
+                element: <MinPricePage />
+            }
+        ]
     }
 ]);
 

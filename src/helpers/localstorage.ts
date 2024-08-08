@@ -85,3 +85,7 @@ export const getLocalStorageValue = (name: string): number => {
     }
     return 0;
 };
+
+export const resetLocalStorage = () => {
+    localStorage.setItem("data", JSON.stringify(INITIAL_ARRAY));
+};
