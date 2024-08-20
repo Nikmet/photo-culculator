@@ -34,6 +34,7 @@ const AdminPage: FunctionComponent<AdminPageProps> = () => {
 
     const onChange = (newValue: SingleValue<IOption | string>) => {
         setInput((newValue as IOption).value);
+        // setValue(getLocalStorageValue((newValue as IOption).value));
     };
 
     const onClick = () => {
@@ -52,7 +53,7 @@ const AdminPage: FunctionComponent<AdminPageProps> = () => {
                 if (clearingInput) {
                     clearingInput.value = "";
                 }
-                setForceRender(r => !r)
+                setForceRender((r) => !r);
             }
         } else {
             const clearingInput: HTMLInputElement | null = document.querySelector("#input");
@@ -69,6 +70,7 @@ const AdminPage: FunctionComponent<AdminPageProps> = () => {
             if (inputCaptcha === captcha) {
                 resetLocalStorage();
                 alert("Данные удалены!");
+                setForceRender((r) => !r);
             } else {
                 alert("Неверный ввод. Попробуйте еще раз.");
             }
@@ -99,7 +101,9 @@ const AdminPage: FunctionComponent<AdminPageProps> = () => {
                 <button className={styles.button} onClick={onClick}>
                     Записать
                 </button>
-                <button onClick={reset} className={styles.reset}>Сбросить все значения</button>
+                <button onClick={reset} className={styles.reset}>
+                    Сбросить все значения
+                </button>
             </div>
             <div className={styles["wrapper-prices"]}>
                 {data.map((v, i) => (

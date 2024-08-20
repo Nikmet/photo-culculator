@@ -55,15 +55,35 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
         } else {
             setPlywoodTotal(undefined);
         }
-        if (acrylic && square && withEngraving) {
+        if (acrylic && square && withEngraving && difficulty === "easy") {
             setAcrylicTotal(
-                roundValue(square * acrylic + getLocalStorageValue("env")) <= 100
+                roundValue(square * acrylic * 3 + getLocalStorageValue("env")) <= 100
                     ? 100
-                    : roundValue(square * acrylic + getLocalStorageValue("env"))
+                    : roundValue(square * acrylic * 3 + getLocalStorageValue("env"))
             );
-        } else if (acrylic && square) {
+        } else if (acrylic && square && withEngraving && difficulty === "medium") {
             setAcrylicTotal(
-                roundValue(square * acrylic) <= 100 ? 100 : roundValue(square * acrylic)
+                roundValue(square * acrylic * 5 + getLocalStorageValue("env")) <= 100
+                    ? 100
+                    : roundValue(square * acrylic * 5 + getLocalStorageValue("env"))
+            );
+        } else if (acrylic && square && withEngraving && difficulty === "hard") {
+            setAcrylicTotal(
+                roundValue(square * acrylic * 7 + getLocalStorageValue("env")) <= 100
+                    ? 100
+                    : roundValue(square * acrylic * 7 + getLocalStorageValue("env"))
+            );
+        } else if (acrylic && square && difficulty === "easy") {
+            setAcrylicTotal(
+                roundValue(square * acrylic * 3) <= 100 ? 100 : roundValue(square * acrylic * 3)
+            );
+        } else if (acrylic && square && difficulty === "medium") {
+            setAcrylicTotal(
+                roundValue(square * acrylic * 5) <= 100 ? 100 : roundValue(square * acrylic * 5)
+            );
+        } else if (acrylic && square && difficulty === "hard") {
+            setAcrylicTotal(
+                roundValue(square * acrylic * 7) <= 100 ? 100 : roundValue(square * acrylic * 7)
             );
         } else {
             setAcrylicTotal(undefined);
@@ -93,14 +113,6 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
                         }}
                         value={plywood ? plywood : ""}
                     />
-                    <SelectInput
-                        id="difficulty"
-                        label="Уровень сложности"
-                        appearance="big"
-                        options={options}
-                        value={getValue()}
-                        onChange={onChange}
-                    />
                 </div>
                 <div className={styles["price__wrapper"]}>
                     <Input
@@ -125,6 +137,17 @@ const CutPage: FunctionComponent<CutPageProps> = () => {
                     />
                 </div>
             </div>
+            <div className={styles.center}>
+                <SelectInput
+                    id="difficulty"
+                    label="Уровень сложности"
+                    appearance="big"
+                    options={options}
+                    value={getValue()}
+                    onChange={onChange}
+                />
+            </div>
+
             <Title appearance="subtitle">Цены</Title>
             <div className={styles.price}>
                 <Input
