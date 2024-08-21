@@ -11,6 +11,7 @@
 -   Zustand выбран в роли state менеджера
 -   Vite для сборки и дебагинга проекта
 -   ESLint, Prettier, Scss
+-   Vite PWA
 
 ---
 
@@ -18,4 +19,4 @@
 
 ---
 
-Ссылка на проект ----
+Ссылка на проект ![https://nikmet.github.io/photo-culculator/banner]
