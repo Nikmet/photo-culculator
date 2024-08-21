@@ -11,6 +11,7 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import { INITIAL_ARRAY } from "./helpers/localstorage";
 import AdminLayout from "./layouts/AdminLayout/AdminLayout";
 import MinPricePage from "./pages/MinPricePage/MinPricePage";
+import PWABadge from "./PWABadge";
 
 const router = createBrowserRouter([
     {
@@ -58,5 +59,6 @@ if (!localStorage.getItem("data")) {
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
         <RouterProvider router={router} />
+        <PWABadge />
     </React.StrictMode>
 );

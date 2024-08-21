@@ -3,7 +3,10 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
+    "homepage": "https://github.com/Nikmet/photo-culculator",
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "dev": "vite",
         "build": "tsc -b && vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
@@ -23,12 +26,23 @@
         "@types/react-dom": "^18.3.0",
         "@typescript-eslint/eslint-plugin": "^7.13.1",
         "@typescript-eslint/parser": "^7.13.1",
+        "@vite-pwa/assets-generator": "^0.2.4",
         "@vitejs/plugin-react-swc": "^3.5.0",
         "eslint": "^8.57.0",
         "eslint-plugin-react-hooks": "^4.6.2",
         "eslint-plugin-react-refresh": "^0.4.7",
+        "gh-pages": "^6.1.1",
         "sass": "^1.77.8",
         "typescript": "^5.2.2",
-        "vite": "^5.3.1"
+        "vite": "^5.3.1",
+        "vite-plugin-pwa": "^0.20.1",
+        "workbox-core": "^7.1.0",
+        "workbox-precaching": "^7.1.0",
+        "workbox-routing": "^7.1.0",
+        "workbox-strategies": "^7.1.0"
+    },
+    "resolutions": {
+        "sharp": "0.32.6",
+        "sharp-ico": "0.1.5"
     }
 }
