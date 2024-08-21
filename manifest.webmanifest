@@ -1,1 +1,22 @@
-{"name":"photo-calculator","short_name":"ph-calc","start_url":"/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/","description":"Приложение для расчета стоимости услуг фото-салона","theme_color":"#844f00","icons":[{"src":"pwa-64x64.png","sizes":"64x64","type":"image/png"},{"src":"pwa-192x192.png","sizes":"192x192","type":"image/png"},{"src":"pwa-512x512.png","sizes":"512x512","type":"image/png"},{"src":"maskable-icon-512x512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}]}
+{
+    "name": "photo-calculator",
+    "short_name": "ph-calc",
+    "start_url": "/photo-culculator",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "lang": "en",
+    "scope": "/photo-culculator",
+    "description": "Приложение для расчета стоимости услуг фото-салона",
+    "theme_color": "#844f00",
+    "icons": [
+        { "src": "/photo-culculator/pwa-64x64.png", "sizes": "64x64", "type": "image/png" },
+        { "src": "/photo-culculator/pwa-192x192.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "/photo-culculator/pwa-512x512.png", "sizes": "512x512", "type": "image/png" },
+        {
+            "src": "/photo-culculator/maskable-icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
