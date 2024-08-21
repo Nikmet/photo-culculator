@@ -15,37 +15,37 @@ import PWABadge from "./PWABadge";
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: "/photo-culculator",
         element: <MainLayout />,
         children: [
             {
-                path: "/banner",
+                path: "/photo-culculator/banner",
                 element: <BannerPage />
             },
             {
-                path: "/tape",
+                path: "/photo-culculator/tape",
                 element: <TapePage />
             },
             {
-                path: "/cut",
+                path: "/photo-culculator/cut",
                 element: <CutPage />
             },
             {
-                path: "/termo",
+                path: "/photo-culculator/termo",
                 element: <TermoPage />
             }
         ]
     },
     {
-        path: "/admin",
+        path: "/photo-culculator/admin",
         element: <AdminLayout />,
         children: [
             {
-                path: "/admin/startPrices",
+                path: "/photo-culculator/admin/startPrices",
                 element: <AdminPage />
             },
             {
-                path: "/admin/minPrice",
+                path: "/photo-culculator/admin/minPrice",
                 element: <MinPricePage />
             }
         ]

@@ -10,20 +10,20 @@ const AdminLayout: FunctionComponent<AdminLayoutProps> = () => {
     const { pathname } = useLocation();
 
     useEffect(() => {
-        navigate("/admin/startPrices");
+        navigate("/photo-culculator/admin/startPrices");
     }, [navigate]);
 
     return (
         <>
             <div className={styles.header}>
-                <NavLink to="/" className={styles["main-link"]}>
+                <NavLink to="/photo-culculator/" className={styles["main-link"]}>
                     &lt; На главную
                 </NavLink>
                 <div className={styles.slider}>
                     <NavLink
                         to="/admin/startPrices"
                         className={classNames(styles.link, [
-                            pathname === "/admin/startPrices" ? styles["link-active"] : ""
+                            pathname === "/photo-culculator/admin/startPrices" ? styles["link-active"] : ""
                         ])}
                     >
                         Начальные цены
@@ -31,7 +31,7 @@ const AdminLayout: FunctionComponent<AdminLayoutProps> = () => {
                     <NavLink
                         to="/admin/minPrice"
                         className={classNames(styles.link, [
-                            pathname === "/admin/minPrice" ? styles["link-active"] : ""
+                            pathname === "/photo-culculator/admin/minPrice" ? styles["link-active"] : ""
                         ])}
                     >
                         Минимальные цены

@@ -14,7 +14,7 @@ export function MainLayout() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        navigate("/banner");
+        navigate("/photo-culculator/banner");
     }, [navigate]);
 
     useEffect(() => {
@@ -63,7 +63,7 @@ export function MainLayout() {
                     {!isMenu ? (
                         <button className={styles.menu}></button>
                     ) : (
-                        <img src="/close.svg" alt="close" />
+                        <img src="/photo-culculator/close.svg" alt="close" />
                     )}
                 </div>
 
