@@ -19,4 +19,4 @@
 
 ---
 
-Ссылка на проект ![https://nikmet.github.io/photo-culculator/banner]
+[Ссылка на проект](https://nikmet.github.io/photo-culculator/banner)
